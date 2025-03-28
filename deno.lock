@@ -3,9 +3,7 @@
   "specifiers": {
     "jsr:@std/assert@1": "1.0.12",
     "jsr:@std/internal@^1.0.6": "1.0.6",
-    "npm:@types/node@*": "22.12.0",
-    "npm:discord.js@*": "14.18.0",
-    "npm:discord.js@^14.18.0": "14.18.0"
+    "npm:discord.js@14.18.0": "14.18.0"
   },
   "jsr": {
     "@std/assert@1.0.12": {
@@ -160,8 +158,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@std/assert@1",
-      "npm:discord.js@^14.18.0"
+      "jsr:@std/assert@1"
     ]
   }
 }
