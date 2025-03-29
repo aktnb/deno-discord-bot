@@ -1,0 +1,33 @@
+name: Build and Deploy
+
+on: [ workflow_dispatch ]
+
+jobs:
+    build:
+        if: github.ref_name == 'master'
+        runs-on: self-hosted
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+
+          - name: Set up Deno
+            uses: denoland/setup-deno@v2
+            with:
+              deno-version: v2.2.6
+
+          - name: Install dependencies
+            run: deno install
+
+          - name: Deno check
+            run: deno check .
+
+          - name: Stop service
+            run: sudo systemctl stop deno-bot-service
+
+          - name: Copy files
+            run: |
+              sudo cp -r . /home/deno-bot-runner
+              sudo chown -R deno-bot-runner:deno-bot-runner /home/deno-bot-runner
+
+          - name: Start service
+            run: sudo systemctl start deno-bot-service
