@@ -1,5 +1,5 @@
 import { CommandInteraction, SlashCommandBuilder } from "discord.js";
-import { CommandHandler } from "../handlers/CommandHandler.ts";
+import { CommandHandler } from "../handlers/command-handler.ts";
 
 export class CatCommand extends CommandHandler {
   readonly name = "cat";

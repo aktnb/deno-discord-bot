@@ -1,6 +1,6 @@
 import { Client, GatewayIntentBits, Events, REST, Routes } from "discord.js";
 import "@std/dotenv/load";
-import { CommandHandler } from "./handlers/CommandHandler.ts";
+import { CommandHandler } from "./handlers/command-handler.ts";
 
 const TOKEN = Deno.env.get("DISCORD_TOKEN"); // Retrieve the token from the environment
 const CLIENT_ID = Deno.env.get("DISCORD_CLIENT_ID"); // Retrieve the client ID from the environment
