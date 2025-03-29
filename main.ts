@@ -1,7 +1,7 @@
 import {
   Client,
-  GatewayIntentBits,
   Events,
+  GatewayIntentBits,
   Routes,
 } from "npm:discord.js@14.18.0";
 import { REST } from "npm:@discordjs/rest@2.4.3";
@@ -40,7 +40,7 @@ async function loadCommands() {
             } catch (error) {
               console.error(
                 `コマンドのインスタンス化に失敗しました: ${dirEntry.name}`,
-                error
+                error,
               );
               continue;
             }

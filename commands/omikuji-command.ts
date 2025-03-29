@@ -67,7 +67,7 @@ export class OmikujiCommand extends CommandHandler {
   getTotalRatio(): number {
     return OmikujiCommand.OMIKUJI.reduce(
       (sum, omikuji) => sum + omikuji.ratio,
-      0
+      0,
     );
   }
 }
