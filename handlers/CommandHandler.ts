@@ -2,7 +2,7 @@ import {
   CommandInteraction,
   SlashCommandBuilder,
   SlashCommandSubcommandsOnlyBuilder,
-} from "npm:discord.js@14.18.0";
+} from "discord.js";
 
 export abstract class CommandHandler {
   //  コマンド名
