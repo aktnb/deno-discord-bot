@@ -27,6 +27,11 @@ jobs:
           - name: Stop service
             run: sudo systemctl stop deno-bot
 
+          - name: Remove old files
+            run: |
+              sudo rm -rf /home/deno-bot-runner/bot
+              sudo mkdir -p /home/deno-bot-runner/bot
+
           - name: Copy files
             run: |
               sudo cp -r . /home/deno-bot-runner/bot
