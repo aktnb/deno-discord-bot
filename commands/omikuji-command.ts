@@ -29,7 +29,13 @@ export class OmikujiCommand extends CommandHandler {
   override async execute(interaction: CommandInteraction): Promise<void> {
     if (interaction.user.bot) return;
     try {
-      const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD形式
+      const today = new Date()
+        .toLocaleDateString("ja-JP", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        })
+        .replace(/\//g, "-");
       const seed = interaction.user.id + today; // ユーザーIDと日付を組み合わせる
       const result = this.getRandomOmikuji(seed); // おみくじの結果を取得
       await interaction.reply({
