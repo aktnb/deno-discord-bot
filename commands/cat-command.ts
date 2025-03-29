@@ -1,4 +1,5 @@
-import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { CommandInteraction } from "npm:discord.js@14.18.0";
+import { SlashCommandBuilder } from "npm:@discordjs/builders@1.10.1";
 import { CommandHandler } from "../handlers/command-handler.ts";
 
 export class CatCommand extends CommandHandler {

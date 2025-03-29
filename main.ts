@@ -1,5 +1,12 @@
-import { Client, GatewayIntentBits, Events, REST, Routes } from "discord.js";
-import "@std/dotenv/load";
+import {
+  Client,
+  GatewayIntentBits,
+  Events,
+  Routes,
+} from "npm:discord.js@14.18.0";
+import { REST } from "npm:@discordjs/rest@2.4.3";
+import "jsr:@std/dotenv/load";
+
 import { CommandHandler } from "./handlers/command-handler.ts";
 
 const TOKEN = Deno.env.get("DISCORD_TOKEN"); // Retrieve the token from the environment

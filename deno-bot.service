@@ -6,7 +6,7 @@ After=network-online.target
 User=deno-bot-runner
 Group=deno-bot-runner
 WorkingDirectory=/home/deno-bot-runner
-ExecStart=/home/deno-bot-runner/.deno/bin/deno run --allow-net --allow-read --allow-env main.ts
+ExecStart=/home/deno-bot-runner/.deno/bin/deno run --allow-net --allow-read --allow-env --allow-import main.ts
 Restart=always
 
 [Install]
