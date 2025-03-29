@@ -1,42 +1,42 @@
 name: Build and Deploy
 
-on: [ workflow_dispatch ]
+on: [workflow_dispatch]
 
 jobs:
-    build:
-        if: github.ref_name == 'main'
-        runs-on: self-hosted
-        steps:
-          - name: Checkout repository
-            uses: actions/checkout@v4
+  build:
+    if: github.ref_name == 'main'
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-          - name: Set up Deno
-            uses: denoland/setup-deno@v2
-            with:
-              deno-version: v2.2.6
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.2.6
 
-          - name: Install dependencies
-            run: deno install
+      - name: Install dependencies
+        run: deno install
 
-          - name: Deno check
-            run: deno check . --allow-import
+      - name: Deno check
+        run: deno check . --allow-import
 
-          - name: Deno test
-            run: deno test --allow-import --allow-read --allow-write --allow-net --allow-env
+      - name: Deno test
+        run: deno test --allow-import --allow-read --allow-write --allow-net --allow-env
 
-          - name: Stop service
-            run: sudo systemctl stop deno-bot
+      - name: Stop service
+        run: sudo systemctl stop deno-bot
 
-          - name: Remove old files
-            run: |
-              sudo rm -rf /home/deno-bot-runner/bot
-              sudo mkdir -p /home/deno-bot-runner/bot
+      - name: Remove old files
+        run: |
+          sudo rm -rf /home/deno-bot-runner/bot
+          sudo mkdir -p /home/deno-bot-runner/bot
 
-          - name: Copy files
-            run: |
-              sudo cp -r . /home/deno-bot-runner/bot
-              sudo chown -R deno-bot-runner:deno-bot-runner /home/deno-bot-runner/bot
-              sudo cp /home/deno-bot-runner/.env.deno-bot /home/deno-bot-runner/bot/.env
+      - name: Copy files
+        run: |
+          sudo cp -r . /home/deno-bot-runner/bot
+          sudo chown -R deno-bot-runner:deno-bot-runner /home/deno-bot-runner/bot
+          sudo cp /home/deno-bot-runner/.env.deno-bot /home/deno-bot-runner/bot/.env
 
-          - name: Start service
-            run: sudo systemctl start deno-bot
+      - name: Start service
+        run: sudo systemctl start deno-bot
