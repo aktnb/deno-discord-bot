@@ -19,7 +19,10 @@ jobs:
             run: deno install
 
           - name: Deno check
-            run: deno check .
+            run: deno check . --allow-import
+
+          - name: Deno test
+            run: deno test --allow-import --allow-read --allow-write --allow-net --allow-env
 
           - name: Stop service
             run: sudo systemctl stop deno-bot
