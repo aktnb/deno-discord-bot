@@ -29,8 +29,9 @@ jobs:
 
           - name: Copy files
             run: |
-              sudo cp -r . /home/deno-bot-runner
-              sudo chown -R deno-bot-runner:deno-bot-runner /home/deno-bot-runner
+              sudo cp -r . /home/deno-bot-runner/bot
+              sudo chown -R deno-bot-runner:deno-bot-runner /home/deno-bot-runner/bot
+              sudo cp /home/deno-bot-runner/bot/.env.deno-bot /home/deno-bot-runner/bot/.env
 
           - name: Start service
             run: sudo systemctl start deno-bot
