@@ -22,7 +22,7 @@ jobs:
             run: deno check .
 
           - name: Stop service
-            run: sudo systemctl stop deno-bot-service
+            run: sudo systemctl stop deno-bot
 
           - name: Copy files
             run: |
@@ -30,4 +30,4 @@ jobs:
               sudo chown -R deno-bot-runner:deno-bot-runner /home/deno-bot-runner
 
           - name: Start service
-            run: sudo systemctl start deno-bot-service
+            run: sudo systemctl start deno-bot
