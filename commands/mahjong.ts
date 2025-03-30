@@ -17,7 +17,7 @@ export default class MahjongCommand extends CommandHandler {
 
       // Fetch the image from the API
       const response = await fetch(
-        "https://mahjoing-api.vercel.app/api/starting-hand"
+        "https://mahjong-api.vercel.app/api/starting-hand"
       );
 
       if (!response.ok) {
