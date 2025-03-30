@@ -1,10 +1,6 @@
-import {
-  Client,
-  Events,
-  GatewayIntentBits,
-  Routes,
-} from "npm:discord.js@14.18.0";
+import { Client, Events } from "npm:discord.js@14.18.0";
 import { REST } from "npm:@discordjs/rest@2.4.3";
+import { GatewayIntentBits, Routes } from "npm:discord-api-types/v10";
 import "jsr:@std/dotenv/load";
 
 import { CommandHandler } from "./handlers/command-handler.ts";
@@ -70,7 +66,6 @@ async function registerGlobalCommands() {
     console.error("グローバルコマンドの登録に失敗しました:", error);
   }
 }
-
 // クライアントインスタンスを作成
 const client = new Client({
   intents: [
