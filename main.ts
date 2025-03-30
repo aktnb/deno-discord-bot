@@ -36,7 +36,7 @@ async function loadCommands() {
             } catch (error) {
               console.error(
                 `コマンドのインスタンス化に失敗しました: ${dirEntry.name}`,
-                error
+                error,
               );
               continue;
             }
