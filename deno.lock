@@ -8,6 +8,7 @@
     "npm:@discordjs/builders@1.10.1": "1.10.1",
     "npm:@discordjs/rest@2.4.3": "2.4.3",
     "npm:@types/node@*": "22.12.0",
+    "npm:discord-api-types@*": "0.37.119",
     "npm:discord.js@14.18.0": "14.18.0",
     "npm:discord.js@^14.18.0": "14.18.0"
   },
