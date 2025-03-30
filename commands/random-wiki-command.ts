@@ -1,5 +1,8 @@
-import { SlashCommandBuilder } from "npm:@discordjs/builders@1.10.1";
-import { CommandInteraction, EmbedBuilder } from "npm:discord.js@14.18.0";
+import {
+  SlashCommandBuilder,
+  EmbedBuilder,
+} from "npm:@discordjs/builders@1.10.1";
+import { CommandInteraction } from "npm:discord.js@14.18.0";
 import { CommandHandler } from "../handlers/command-handler.ts";
 
 export class RandomWikiCommand extends CommandHandler {
