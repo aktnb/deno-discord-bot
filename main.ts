@@ -1,9 +1,10 @@
-import { Client, Events } from "npm:discord.js@14.18.0";
+import { Client, ClientEvents, Events } from "npm:discord.js@14.18.0";
 import { REST } from "npm:@discordjs/rest@2.4.3";
 import { GatewayIntentBits, Routes } from "npm:discord-api-types/v10";
 import "jsr:@std/dotenv/load";
 
 import { CommandHandler } from "./handlers/command-handler.ts";
+import { EventHandler } from "./handlers/event-handler.ts";
 
 const TOKEN = Deno.env.get("DISCORD_TOKEN"); // Retrieve the token from the environment
 const CLIENT_ID = Deno.env.get("DISCORD_CLIENT_ID"); // Retrieve the client ID from the environment
@@ -14,6 +15,7 @@ if (!TOKEN || !CLIENT_ID) {
 }
 
 const commands = new Map<string, CommandHandler>();
+const events = new Map<keyof ClientEvents, EventHandler<keyof ClientEvents>>();
 
 async function loadCommands() {
   const commandsDir = "./commands";
@@ -36,7 +38,7 @@ async function loadCommands() {
             } catch (error) {
               console.error(
                 `コマンドのインスタンス化に失敗しました: ${dirEntry.name}`,
-                error,
+                error
               );
               continue;
             }
@@ -46,6 +48,59 @@ async function loadCommands() {
     }
   } catch (error) {
     console.error("コマンドの読み込みに失敗しました:", error);
+  }
+}
+
+async function loadEvents() {
+  const eventsDir = "./events";
+
+  try {
+    for await (const dirEntry of Deno.readDir(eventsDir)) {
+      if (dirEntry.isFile && dirEntry.name.endsWith(".ts")) {
+        const module = await import(`${eventsDir}/${dirEntry.name}`);
+
+        for (const ExportedClass of Object.values(module)) {
+          if (
+            typeof ExportedClass === "function" &&
+            ExportedClass.prototype instanceof EventHandler
+          ) {
+            try {
+              const eventInstance =
+                new (ExportedClass as new () => EventHandler<
+                  keyof ClientEvents
+                >)();
+              events.set(eventInstance.name, eventInstance);
+              console.log(`イベントを読み込みました: ${eventInstance.name}`);
+            } catch (error) {
+              console.error(
+                `イベントのインスタンス化に失敗しました: ${dirEntry.name}`,
+                error
+              );
+              continue;
+            }
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.error("イベントの読み込みに失敗しました:", error);
+  }
+}
+
+function registerEvents(client: Client) {
+  for (const [name, event] of events.entries()) {
+    if (event.once) {
+      client.once(
+        name as keyof ClientEvents,
+        (...args: ClientEvents[typeof name]) => event.execute(...args)
+      );
+    } else {
+      client.on(
+        name as keyof ClientEvents,
+        (...args: ClientEvents[typeof name]) => event.execute(...args)
+      );
+    }
+    console.log(`イベントを登録しました: ${name}`);
   }
 }
 
@@ -66,6 +121,7 @@ async function registerGlobalCommands() {
     console.error("グローバルコマンドの登録に失敗しました:", error);
   }
 }
+
 // クライアントインスタンスを作成
 const client = new Client({
   intents: [
@@ -78,6 +134,12 @@ const client = new Client({
 // クライアントの準備ができたらコンソールに出力
 client.once(Events.ClientReady, async (c) => {
   console.log(`Ready! Logged in as ${c.user.tag}!`);
+
+  await loadEvents();
+  console.log("イベントの読み込みが完了しました。");
+
+  await registerEvents(client);
+  console.log("イベントの登録が完了しました。");
 
   await loadCommands();
   console.log("コマンドの読み込みが完了しました。");
