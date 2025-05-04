@@ -1,4 +1,4 @@
-import { Message } from "npm:discord.js@14.18.0";
+import { Message } from "discord.js";
 import { EventHandler } from "../handlers/event-handler.ts";
 
 export class MessageCreateEvent extends EventHandler<"messageCreate"> {

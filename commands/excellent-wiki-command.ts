@@ -1,8 +1,8 @@
 import {
+  CommandInteraction,
   EmbedBuilder,
   SlashCommandBuilder,
-} from "npm:@discordjs/builders@1.10.1";
-import { CommandInteraction } from "npm:discord.js@14.18.0";
+} from "discord.js";
 import { CommandHandler } from "../handlers/command-handler.ts";
 
 export class ExcellentWikiCommand extends CommandHandler {

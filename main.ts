@@ -1,6 +1,11 @@
-import { Client, ClientEvents, Events } from "npm:discord.js@14.18.0";
-import { REST } from "npm:@discordjs/rest@2.4.3";
-import { GatewayIntentBits, Routes } from "npm:discord-api-types/v10";
+import {
+  Client,
+  ClientEvents,
+  Events,
+  GatewayIntentBits,
+  REST,
+  Routes,
+} from "discord.js";
 import "jsr:@std/dotenv/load";
 
 import { CommandHandler } from "./handlers/command-handler.ts";

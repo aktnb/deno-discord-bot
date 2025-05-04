@@ -1,5 +1,4 @@
-import { SlashCommandBuilder } from "npm:@discordjs/builders@1.10.1";
-import { CommandInteraction } from "npm:discord.js@14.18.0";
+import { CommandInteraction, SlashCommandBuilder } from "discord.js";
 import { CommandHandler } from "../handlers/command-handler.ts";
 import { Buffer } from "node:buffer";
 

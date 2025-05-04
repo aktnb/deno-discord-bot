@@ -1,8 +1,8 @@
-import { CommandInteraction } from "npm:discord.js@14.18.0";
 import {
+  CommandInteraction,
   SlashCommandBuilder,
   SlashCommandSubcommandsOnlyBuilder,
-} from "npm:@discordjs/builders@1.10.1";
+} from "discord.js";
 
 export abstract class CommandHandler {
   //  コマンド名

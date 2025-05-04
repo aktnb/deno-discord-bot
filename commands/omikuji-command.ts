@@ -1,8 +1,8 @@
 import {
   CommandInteraction,
   MessageFlagsBitField,
-} from "npm:discord.js@14.18.0";
-import { SlashCommandBuilder } from "npm:@discordjs/builders@1.10.1";
+  SlashCommandBuilder,
+} from "discord.js";
 import { CommandHandler } from "../handlers/command-handler.ts";
 import seedrandom from "https://cdn.skypack.dev/seedrandom";
 
