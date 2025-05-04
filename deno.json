@@ -10,6 +10,7 @@
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
     "@types/pg": "npm:@types/pg@^8.11.14",
+    "async-lock": "npm:async-lock@^1.4.1",
     "discord.js": "npm:discord.js@^14.19.3",
     "drizzle-kit": "npm:drizzle-kit@^0.31.1",
     "drizzle-orm": "npm:drizzle-orm@^0.43.1",

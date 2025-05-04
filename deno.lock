@@ -9,6 +9,7 @@
     "npm:@discordjs/rest@2.4.3": "2.4.3",
     "npm:@types/node@*": "22.12.0",
     "npm:@types/pg@^8.11.14": "8.11.14",
+    "npm:async-lock@^1.4.1": "1.4.1",
     "npm:discord-api-types@*": "0.37.119",
     "npm:discord.js@14.18.0": "14.18.0",
     "npm:discord.js@^14.18.0": "14.18.0",
@@ -447,6 +448,9 @@
     "@vladfrangu/async_event_emitter@2.4.6": {
       "integrity": "sha512-RaI5qZo6D2CVS6sTHFKg1v5Ohq/+Bo2LZ5gzUEwZ/WkHhwtGTCB/sVLw8ijOkAUxasZ+WshN/Rzj4ywsABJ5ZA=="
     },
+    "async-lock@1.4.1": {
+      "integrity": "sha512-Az2ZTpuytrtqENulXwO3GGv1Bztugx6TT37NIo7imr/Qo0gsYiGtSdBa2B6fsXhTpVZDNfu1Qn3pk531e3q+nQ=="
+    },
     "buffer-from@1.1.2": {
       "integrity": "sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ=="
     },
@@ -801,6 +805,7 @@
     "dependencies": [
       "jsr:@std/assert@1",
       "npm:@types/pg@^8.11.14",
+      "npm:async-lock@^1.4.1",
       "npm:discord.js@^14.19.3",
       "npm:drizzle-kit@~0.31.1",
       "npm:drizzle-orm@~0.43.1",
