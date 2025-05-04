@@ -52,7 +52,7 @@ export async function syncRoom(voiceChannel: VoiceChannel) {
     if (!textChannel) {
       console.log(
         "Creating text channel for voice channel:",
-        voiceChannel.name
+        voiceChannel.name,
       );
 
       const permissionOverwrites: OverwriteResolvable[] = voiceChannel.members
@@ -83,7 +83,7 @@ export async function syncRoom(voiceChannel: VoiceChannel) {
     }
 
     console.log(
-      `Syncing voice channel and text channel:${textChannel.name}:${guild.name}`
+      `Syncing voice channel and text channel:${textChannel.name}:${guild.name}`,
     );
 
     await syncMember(voiceChannel, textChannel);
@@ -109,7 +109,7 @@ export async function syncRoom(voiceChannel: VoiceChannel) {
 
 async function syncMember(
   voiceChannel: VoiceChannel,
-  textChannel: TextChannel
+  textChannel: TextChannel,
 ) {
   await Promise.all(
     voiceChannel.members
@@ -120,14 +120,14 @@ async function syncMember(
           ViewChannel: true,
           ReadMessageHistory: true,
         })
-      )
+      ),
   );
 
   await Promise.all(
     textChannel.members
       .filter((m) => !m.user.bot)
       .filter((m) => !voiceChannel.members.has(m.id))
-      .map((m) => textChannel.permissionOverwrites.delete(m))
+      .map((m) => textChannel.permissionOverwrites.delete(m)),
   );
 }
 

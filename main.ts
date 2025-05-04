@@ -43,7 +43,7 @@ async function loadCommands() {
             } catch (error) {
               console.error(
                 `コマンドのインスタンス化に失敗しました: ${dirEntry.name}`,
-                error
+                error,
               );
               continue;
             }
@@ -79,7 +79,7 @@ async function loadEvents() {
             } catch (error) {
               console.error(
                 `イベントのインスタンス化に失敗しました: ${dirEntry.name}`,
-                error
+                error,
               );
               continue;
             }
@@ -97,12 +97,12 @@ function registerEvents(client: Client) {
     if (event.once) {
       client.once(
         name as keyof ClientEvents,
-        (...args: ClientEvents[typeof name]) => event.execute(...args)
+        (...args: ClientEvents[typeof name]) => event.execute(...args),
       );
     } else {
       client.on(
         name as keyof ClientEvents,
-        (...args: ClientEvents[typeof name]) => event.execute(...args)
+        (...args: ClientEvents[typeof name]) => event.execute(...args),
       );
     }
     console.log(`イベントを登録しました: ${name}`);
