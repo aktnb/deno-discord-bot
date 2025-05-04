@@ -27,9 +27,6 @@ jobs:
       - name: Deno test
         run: deno test --allow-import --allow-read --allow-write --allow-net --allow-env
 
-      - name: Generate
-        run: deno task generate
-
       - name: Stop service
         run: sudo systemctl stop deno-bot
 
