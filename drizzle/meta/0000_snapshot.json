@@ -1,0 +1,69 @@
+{
+  "id": "15ba09bf-2bc3-40f5-8023-abfee9256d61",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.rooms": {
+      "name": "rooms",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "rooms_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "voiceChannelId": {
+          "name": "voiceChannelId",
+          "type": "varchar(32)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "textChannelId": {
+          "name": "textChannelId",
+          "type": "varchar(32)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "rooms_voiceChannelId_unique": {
+          "name": "rooms_voiceChannelId_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "voiceChannelId"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
